@@ -18,7 +18,7 @@ import axios from 'axios';
 
 setInterval(() => {
     axios.get(`http://localhost:${PORT}/keep-alive`).then(async (res) => console.log(await res.data)).catch(e => console.log(e))
-}, 15 * 60 * 1000)
+}, 10 * 60 * 1000)
 
 app.use(cors());
 app.use(Express.json())
