@@ -9,6 +9,7 @@ import cron from 'node-cron';
 import { notFound, errorHandler } from './middlewares/errorMiddleware.js'
 import apiRoute from './routes/index.js'
 import path from 'path';
+import axios from 'axios';
 
 // cron.schedule('*/1 * * * *', () => {
 //     //'Pinging server at every 10 min.';
@@ -16,8 +17,8 @@ import path from 'path';
 // });
 
 setInterval(() => {
-    fetch(`http://localhost:${PORT}/keep-alive`).then(async (res) => console.log(await res.text())).catch(e => console.log(e))
-},10*60*1000)
+    axios.get(`http://localhost:${PORT}/keep-alive`).then(async (res) => console.log(await res.text())).catch(e => console.log(e))
+}, 10 * 60 * 1000)
 
 app.use(cors());
 app.use(Express.json())
