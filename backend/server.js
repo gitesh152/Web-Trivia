@@ -10,10 +10,14 @@ import { notFound, errorHandler } from './middlewares/errorMiddleware.js'
 import apiRoute from './routes/index.js'
 import path from 'path';
 
-cron.schedule('*/10 * * * *', () => {
-    //'Pinging server at every 10 min.';
+// cron.schedule('*/1 * * * *', () => {
+//     //'Pinging server at every 10 min.';
+//     fetch(`http://localhost:${PORT}/keep-alive`).then(async (res) => console.log(await res.text())).catch(e => console.log(e))
+// });
+
+setInterval(() => {
     fetch(`http://localhost:${PORT}/keep-alive`).then(async (res) => console.log(await res.text())).catch(e => console.log(e))
-});
+},10*60*1000)
 
 app.use(cors());
 app.use(Express.json())
