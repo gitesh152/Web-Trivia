@@ -17,7 +17,7 @@ import axios from 'axios';
 // });
 
 setInterval(() => {
-    axios.get(`http://localhost:${PORT}/keep-alive`).then(async (res) => console.log(await res.text())).catch(e => console.log(e))
+    axios.get(`http://localhost:${PORT}/keep-alive`).then(async (res) => console.log(await res.data)).catch(e => console.log(e))
 }, 1 * 60 * 1000)
 
 app.use(cors());
