@@ -8,10 +8,11 @@ import cors from 'cors'
 import cron from 'node-cron';
 import { notFound, errorHandler } from './middlewares/errorMiddleware.js'
 import apiRoute from './routes/index.js'
+import path from 'path';
 
 cron.schedule('*/10 * * * *', () => {
     //'Pinging server at every 10 min.';
-    fetch('http://localhost:3000/keep-alive').then(async (res) => console.log(await res.text())).catch(e => console.log(e))
+    fetch(`http://localhost:${PORT}/keep-alive`).then(async (res) => console.log(await res.text())).catch(e => console.log(e))
 });
 
 app.use(cors());
@@ -22,6 +23,21 @@ app.get('/keep-alive', (req, res) => {
 });
 
 app.use('/api', apiRoute);
+
+// --------------------------deployment------------------------------
+const __dirname1 = path.resolve();
+if (process.env.NODE_ENV === "production") {
+    app.use(Express.static(path.join(__dirname1, "/frontend/dist")));
+    app.get("*", (req, res) =>
+        res.sendFile(path.resolve(__dirname1, "frontend", "dist", "index.html"))
+    );
+}
+else {
+    app.get("/", (req, res) =>
+        res.send("API is running..")
+    );
+}
+// --------------------------deployment------------------------------
 
 app.use(notFound)
 app.use(errorHandler)
