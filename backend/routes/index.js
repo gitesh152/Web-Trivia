@@ -6,6 +6,6 @@ router.get('/', (req, res) => {
     res.send('Home API');
 })
 
-router.use('/user', user)
+router.use('/users', user)
 
 export default router;
