@@ -4,7 +4,6 @@ import HomePage from '../Pages/HomePage'
 import TriviaPage from '../Pages/TriviaPage'
 
 function App() {
-  
   return (
      <div className='App'>
       <Routes>

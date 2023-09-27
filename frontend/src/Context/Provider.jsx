@@ -8,6 +8,7 @@ const apiUrl=`http://localhost:5000/api`
 
 const Provider = ({ children }) => {
     const [user, setUser] = useState('')
+    const [questions,setQuestions]=useState([])
     const Navigate = useNavigate();
     useEffect(() => {
         const userInfo = JSON.parse(localStorage.getItem('userInfo'))
@@ -18,7 +19,7 @@ const Provider = ({ children }) => {
         }
     },[Navigate])
   return (
-      <ContextProvider.Provider value={{apiUrl,user}}>
+      <ContextProvider.Provider value={{apiUrl,user,questions,setQuestions}}>
           {children}
     </ContextProvider.Provider>
   )
