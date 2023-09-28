@@ -49,18 +49,21 @@ const Question = ({ index, question }) => {
                           {question.options.map((option,index) =>
                             {
                             return (<Box key={index} display='flex' alignItems={'center'} mt='1'
+                              className="Box__container"
                               _hover={{cursor:'pointer', backgroundColor: toggleShowAnswer ? 'none' : 'blackAlpha.50' } }
                               backgroundColor={!toggleShowAnswer ? 'none' : option.isCorrect ? 'green.100' :  opts[index] === '' ? 'none' : 'red.100'}
                               p='1'
                               borderRadius={'5px'}
-                            >
-                              <FormControl display={'flex'} alignItems={'center'} >
+                              >
+                              <FormControl
+                              onClick={(e) => handleOptionCheckBoxChange(index, e.target.checked)}
+                                display={'flex'} alignItems={'center'} >
                                 <label className="checkBox__container">
                                   <Input
                                     type="checkbox"
                                     disabled={toggleShowAnswer}
                                     border={'none'}
-                                    onChange={(e) => handleOptionCheckBoxChange(index, e.target.checked)}
+                                    onChange={()=>{}}
                                     checked={toggleShowAnswer ? option.isCorrect : opts[index]}
                                   />
                                   <span className="checkmark"></span>
@@ -79,7 +82,6 @@ const Question = ({ index, question }) => {
               }
             </CardBody>
                         <Divider borderWidth='3px' borderColor='blackAlpha.50' />
-            
                         <CardFooter p='3' ps='4' display='flex' justifyContent='flex-start' alignItems={'baseline'} flexDirection={{ base: 'column', sm: 'row' }} >
               <Button size={{ base:'xs',sm:'sm'}} colorScheme='twitter' onClick={handleAnswer}>
                 {toggleShowAnswer ? 'Hide' : 'Show'} Answer

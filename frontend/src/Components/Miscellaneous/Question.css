@@ -33,7 +33,7 @@
 }
 
 /* On mouse-over, add a grey background color */
-.checkBox__container:hover input ~ .checkmark {
+.Box__container:hover input ~ .checkmark {
   background-color: #ccc;
 }
 
