@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 
 const ContextProvider = createContext();
 
-const apiUrl=`http://localhost:5000/api`
+// const apiUrl=`http://localhost:5000/api`
 //Mannually setting api url only for render deployment.
-// const apiUrl=`https://web-trivia.onrender.com/api`
+const apiUrl=`https://web-trivia.onrender.com/api`
 
 const Provider = ({ children }) => {
     const [user, setUser] = useState('')
