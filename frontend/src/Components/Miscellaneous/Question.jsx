@@ -18,8 +18,9 @@ const Question = ({ index, question }) => {
     const newOpts=[...opts]
     newOpts[index] = !newOpts[index] ? true : ''
     setOpts(newOpts)
+    console.log(opts)
   }
-
+console.log(toggleShowAnswer ? false : true)
   return (
     <>
             <ScaleFade initialScale={0.9} in={true}>
@@ -48,30 +49,30 @@ const Question = ({ index, question }) => {
                         <CardBody m='-2'>
                           {question.options.map((option,index) =>
                             {
-                            return (<Box key={index} display='flex' alignItems={'center'} mt='1'
+                            return (<Box
+                              key={index} display='flex' alignItems={'center'} mt='1'
                               className="Box__container"
-                              _hover={{cursor:'pointer', backgroundColor: toggleShowAnswer ? 'none' : 'blackAlpha.50' } }
+                              _hover={{ backgroundColor: toggleShowAnswer ? 'none' : 'blackAlpha.50' } }
                               backgroundColor={!toggleShowAnswer ? 'none' : option.isCorrect ? 'green.100' :  opts[index] === '' ? 'none' : 'red.100'}
                               p='1'
                               borderRadius={'5px'}
                               >
                               <FormControl
-                              onClick={(e) => handleOptionCheckBoxChange(index, e.target.checked)}
                                 display={'flex'} alignItems={'center'} >
-                                <label className="checkBox__container">
+                                <label className="checkBox__container"
+                                >
                                   <Input
                                     type="checkbox"
                                     disabled={toggleShowAnswer}
                                     border={'none'}
-                                    onChange={()=>{}}
+                                    onChange={(e) => handleOptionCheckBoxChange(index, e.target.checked)}
                                     checked={toggleShowAnswer ? option.isCorrect : opts[index]}
                                   />
                                   <span className="checkmark"></span>
                                   { option.optionInfo}
                                 </label>
                               </FormControl>
-                            </Box>
-                            )
+                            </Box>)
                           })}
               {toggleShowAnswer &&
                 <Box mt='1'>

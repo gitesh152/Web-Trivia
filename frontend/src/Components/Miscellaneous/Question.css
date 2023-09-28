@@ -4,6 +4,7 @@
 .checkBox__container {
   display: block;
   position: relative;
+  width:100%;
   padding-left: 35px;
   cursor: pointer;
   font-size: 16px;
