@@ -6,15 +6,20 @@ import './Question.css'
 const Question = ({ index, question }) => {
   const [opts, setOpts] = useState(() => {
       return Array.from({ length: question.options.length }, () => '')
-    });
+  });
+  
   const [toggleShowAnswer, setToggleShowAnswer] = useState(false)
+  
   const handleAnswer = () => {
     setToggleShowAnswer(prev=>!prev)
   }
+
   const handleOptionCheckBoxChange = (index) => {
-    opts[index] = !opts[index] ? true : ''
-    setOpts(opts)
+    const newOpts=[...opts]
+    newOpts[index] = !newOpts[index] ? true : ''
+    setOpts(newOpts)
   }
+
   return (
     <>
             <ScaleFade initialScale={0.9} in={true}>
@@ -44,10 +49,8 @@ const Question = ({ index, question }) => {
                           {question.options.map((option,index) =>
                             {
                             return (<Box key={index} display='flex' alignItems={'center'} mt='1'
-                              
                               _hover={{cursor:'pointer', backgroundColor: toggleShowAnswer ? 'none' : 'blackAlpha.50' } }
-                              backgroundColor={!toggleShowAnswer ? 'none' : option.isCorrect ? 'green.100' :  opts[index] === '' ? 'none' : 'red.100'
-                              }
+                              backgroundColor={!toggleShowAnswer ? 'none' : option.isCorrect ? 'green.100' :  opts[index] === '' ? 'none' : 'red.100'}
                               p='1'
                               borderRadius={'5px'}
                             >
@@ -60,7 +63,6 @@ const Question = ({ index, question }) => {
                                     onChange={(e) => handleOptionCheckBoxChange(index, e.target.checked)}
                                     checked={toggleShowAnswer ? option.isCorrect : opts[index]}
                                   />
-                                  
                                   <span className="checkmark"></span>
                                   { option.optionInfo}
                                 </label>

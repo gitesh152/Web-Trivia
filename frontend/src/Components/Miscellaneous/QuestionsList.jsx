@@ -1,4 +1,4 @@
-import { Box, Card, CardBody, CardHeader, Checkbox, Divider, Icon, ScaleFade, Skeleton, Spinner, Text, VStack, useToast } from '@chakra-ui/react'
+import { Box, Card, CardBody, CardHeader, Divider, Icon, ScaleFade, Skeleton, Spinner, VStack, useToast } from '@chakra-ui/react'
 import  { useEffect, useState } from 'react'
 import { ContextState } from '../../Context/Provider'
 import axios from 'axios'
@@ -41,10 +41,6 @@ const QuestionsList = () => {
         fetchQuestions();
     },[apiUrl, setQuestions, toast, user.token])
 
-    const handleCheck = (e) => {
-        e.target.checked==true
-        console.log(e.target.checked)
-    }
   return (
       <>
        <VStack display='block'>
@@ -84,7 +80,6 @@ const QuestionsList = () => {
                           questions.map((question,i)=><Question key={question._id} index={i+1} question={question} />)
                           :
                           <ScaleFade initialScale={0.9} in={true} >
-                               <Checkbox checked  pe='1' onChange={handleCheck} borderColor={'blue.700'} colorScheme='blue'  w='100' size='lg' ><Text fontSize='2xl' pe='2' color='red.700'>{ 1}</Text></Checkbox>
                               <Box pb='2'>
                                   <Card
                                       backgroundColor='white'
