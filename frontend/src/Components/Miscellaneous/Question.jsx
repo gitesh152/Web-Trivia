@@ -18,7 +18,6 @@ const Question = ({ index, question }) => {
     const newOpts=[...opts]
     newOpts[index] = !newOpts[index] ? true : ''
     setOpts(newOpts)
-    console.log(opts)
   }
 console.log(toggleShowAnswer ? false : true)
   return (
