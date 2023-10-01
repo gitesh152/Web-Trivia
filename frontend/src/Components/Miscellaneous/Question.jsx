@@ -19,7 +19,7 @@ const Question = ({ index, question }) => {
     newOpts[index] = !newOpts[index] ? true : ''
     setOpts(newOpts)
   }
-console.log(toggleShowAnswer ? false : true)
+  
   return (
     <>
             <ScaleFade initialScale={0.9} in={true}>
