@@ -5,7 +5,7 @@ import QuestionsList from '../Components/Miscellaneous/QuestionsList'
 const TriviaPage = () => {
 
   return (
-    <div style={{ width: "100%",overflowY:'auto' }} >
+    <div style={{ width: "100%", overflowY:'auto', paddingBottom:'100px' }} >
       <Header />
       <Box position='relative'
         top='66px'

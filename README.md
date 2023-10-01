@@ -198,7 +198,7 @@ Project Link: [https://github.com/gitesh152/Web-Trivia](https://github.com/gites
 These are some more useful libraries and resources used in project
 
 <ol>
-<li>JWTWebToken</li>
+<li>JsonWebToken</li>
 <li>BcryptJS</li>
 <li>Axios</li>
 <li>React-Icons</li>
